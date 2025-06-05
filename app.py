@@ -16,7 +16,7 @@ from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
-app.secret_key = 'Sh48KsO%*#)@sSJfkUEjDUei&21'  # Replace with your own secret key!
+app.secret_key = 'Sh48KsO%*#)@sSJfkUEjDUei&21'  
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 DATABASE = os.path.join(basedir, 'app.db')
