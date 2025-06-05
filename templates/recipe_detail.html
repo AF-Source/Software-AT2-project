@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% block title %}{{ recipe['title'] }} - RecipeShare{% endblock %}
+
+{% block content %}
+<article class="recipe-detail">
+  <h1>{{ recipe['title'] }}</h1>
+  <p class="author">
+    By {% if recipe['author_username'] %}{{ recipe['author_username'] }}{% else %}Unknown{% endif %} on 
+    {% if recipe['created_at'] %}
+      {% if recipe['created_at'] is string %}
+        {{ recipe['created_at'] }}
+      {% else %}
+        {{ recipe['created_at'].strftime('%b %d, %Y') }}
+      {% endif %}
+    {% else %}
+      Unknown Date
+    {% endif %}
+  </p>
+
+  <p><strong>Difficulty:</strong> {{ recipe['difficulty'] }}</p>
+  <p><strong>Time Required:</strong> {{ recipe['time_required'] }} minutes</p>
+
+  <div class="description">
+    <pre>{{ recipe['description'] }}</pre>
+  </div>
+
+  {% if avg_rating %}
+    <p class="avg-rating">Average Rating: ★ {{ avg_rating }}</p>
+  {% else %}
+    <p class="avg-rating">No ratings yet.</p>
+  {% endif %}
+
+  {% if current_user and current_user['id'] == recipe['user_id'] %}
+    <form method="POST" action="{{ url_for('delete_recipe', recipe_id=recipe['id']) }}" onsubmit="return confirm('Are you sure you want to delete this recipe?');" class="delete-form">
+      <button type="submit" class="btn btn-danger">Delete Recipe</button>
+    </form>
+  {% endif %}
+</article>
+
+<section class="comments-section">
+  <h2>Comments &amp; Reviews</h2>
+  {% if comments and comments|length > 0 %}
+    <ul class="comments-list">
+      {% for comment in comments %}
+        <li class="comment">
+          <p>
+            <strong>
+              {% if comment['username'] %}
+                {{ comment['username'] }}
+              {% else %}
+                Unknown
+              {% endif %}
+            </strong>
+            rated ★ {{ comment['rating'] }} on 
+            {% if comment['created_at'] %}
+              {% if comment['created_at'] is string %}
+                {{ comment['created_at'] }}
+              {% else %}
+                {{ comment['created_at'].strftime('%b %d, %Y %H:%M') }}
+              {% endif %}
+            {% else %}
+              Unknown Date
+            {% endif %}
+          </p>
+          <p>{{ comment['content'] }}</p>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No comments yet. Be the first to review!</p>
+  {% endif %}
+
+  {% if current_user %}
+    <form action="{{ url_for('add_comment', recipe_id=recipe['id']) }}" method="POST" class="form-comment">
+      <label for="content">Your Comment</label>
+      <textarea id="content" name="content" rows="4" required></textarea>
+      <label for="rating">Rating</label>
+      <select id="rating" name="rating" required>
+        <option value="">--Select Rating--</option>
+        <option value="5">5 - Excellent</option>
+        <option value="4">4 - Very Good</option>
+        <option value="3">3 - Good</option>
+        <option value="2">2 - Fair</option>
+        <option value="1">1 - Poor</option>
+      </select>
+      <button type="submit" class="btn btn-primary">Add Comment</button>
+    </form>
+  {% else %}
+    <p><a href="{{ url_for('login') }}">Log in</a> to add a comment or review.</p>
+  {% endif %}
+</section>
+{% endblock %}

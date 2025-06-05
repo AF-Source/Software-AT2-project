@@ -1,0 +1,277 @@
+/* Reset and base */
+* {
+  margin: 0; padding: 0; box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background: #f9f9f9;
+  color: #333;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+  flex: 1;
+}
+
+header, footer {
+  background: #4CAF50;
+  color: #fff;
+}
+
+footer p {
+  text-align: center;
+  padding: 1rem 0;
+  font-size: 0.9rem;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.85rem 1rem;
+}
+
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #fff;
+  text-decoration: none;
+}
+
+.navbar-menu {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.navbar-menu li {
+  color: #fff;
+}
+
+.navbar-menu li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.navbar-menu li a:hover {
+  background: #388E3C;
+}
+
+.btn-logout {
+  background: #d32f2f;
+  color: #fff !important;
+  font-weight: 700;
+}
+
+.btn-logout:hover {
+  background: #9a0007;
+}
+
+h1 {
+  margin-bottom: 1.2rem;
+  color: #2e7d32;
+}
+
+.recipe-list {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.recipe-card {
+  background: #fff;
+  border-radius: 6px;
+  padding: 1rem 1.2rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.recipe-card h2 {
+  font-size: 1.2rem;
+  margin-bottom: 0.3rem;
+  color: #388e3c;
+}
+
+.recipe-card .author {
+  font-size: 0.85rem;
+  color: #777;
+  margin-bottom: 0.6rem;
+}
+
+.recipe-card .description {
+  flex-grow: 1;
+  margin-bottom: 1rem;
+  color: #555;
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  background: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.2s ease;
+}
+
+.btn-primary:hover {
+  background: #388e3c;
+}
+
+.btn-danger {
+  background: #d32f2f;
+}
+
+.btn-danger:hover {
+  background: #9a0007;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+label {
+  font-weight: 600;
+}
+
+input[type=text], input[type=password], textarea, select {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  width: 100%;
+  resize: vertical;
+  font-family: inherit;
+}
+
+textarea {
+  font-family: inherit;
+}
+
+.flash-messages {
+  margin-bottom: 1rem;
+}
+
+.alert {
+  padding: 0.7rem 1rem;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.alert-success {
+  background: #d0f0d7;
+  color: #2e7d32;
+}
+
+.alert-danger {
+  background: #f9d6d5;
+  color: #d32f2f;
+}
+
+.alert-warning {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.alert-info {
+  background: #d1ecf1;
+  color: #0c5460;
+}
+
+.recipe-detail {
+  background: #fff;
+  padding: 1.5rem 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  margin-bottom: 2rem;
+}
+
+.recipe-detail h1 {
+  margin-bottom: 0.2rem;
+  color: #2e7d32;
+}
+
+.recipe-detail .author {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.recipe-detail .description pre {
+  white-space: pre-wrap;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.5;
+  font-size: 1rem;
+  color: #444;
+}
+
+.avg-rating {
+  font-weight: 700;
+  margin-top: 0.8rem;
+  color: #388e3c;
+}
+
+.delete-form {
+  margin-top: 1rem;
+}
+
+.comments-section {
+  background: #fff;
+  padding: 1.5rem 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+
+.comments-section h2 {
+  margin-bottom: 1rem;
+  color: #2e7d32;
+}
+
+.comments-list {
+  list-style-type: none;
+  margin-bottom: 1em;
+}
+
+.comment {
+  border-bottom: 1px solid #ddd;
+  padding: 0.75rem 0;
+}
+
+.comment:last-child {
+  border-bottom: none;
+}
+
+.comment strong {
+  color: #555;
+}
+
+.form-comment label {
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 600px) {
+  .recipe-list {
+    grid-template-columns: 1fr;
+  }
+}
+

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}New Recipe - RecipeShare{% endblock %}
+{% block content %}
+<h1>Post a New Recipe</h1>
+<form action="{{ url_for('new_recipe') }}" method="POST" class="form-recipe">
+  <label for="title">Recipe Title</label>
+  <input type="text" name="title" id="title" maxlength="120" required />
+
+  <label for="description">Description & Instructions</label>
+  <textarea name="description" id="description" rows="8" required></textarea>
+
+  <label for="difficulty">Difficulty</label>
+  <select name="difficulty" id="difficulty" required>
+    <option value="" disabled selected>Select difficulty</option>
+    <option value="Easy">Easy</option>
+    <option value="Medium">Medium</option>
+    <option value="Hard">Hard</option>
+  </select>
+
+  <label for="time_required">Time Required (minutes)</label>
+  <input type="number" name="time_required" id="time_required" min="1" required />
+
+  <button type="submit" class="btn btn-primary">Post Recipe</button>
+</form>
+{% endblock %}
